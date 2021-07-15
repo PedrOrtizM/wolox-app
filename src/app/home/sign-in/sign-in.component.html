@@ -1,0 +1,57 @@
+<form [formGroup]="profileForm" (ngSubmit)="signIn()">
+    <h3>Registro</h3>
+    <fieldset>
+        <!-- <legend>Nombre completo</legend> -->
+        <label for="name">Nombre</label>
+        <input appWxInput formControlName="name" type="text" name="name" id="name">
+        <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'name'}"></ng-container>
+
+
+        <label for="last-name">Apellido</label>
+        <input appWxInput formControlName="last_name" type="text" name="last-name" id="last-name">
+        <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'last_name'}"></ng-container>
+
+    </fieldset>
+    <fieldset>
+        <label for="country">Pais</label>
+        <input appWxInput formControlName="country" type="text" name="country" id="country">
+        <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'country'}"></ng-container>
+
+        <label for="email">Correo electrónico</label>
+        <input appWxInput formControlName="mail" type="email" name="email" id="email">
+        <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'mail'}"></ng-container>
+
+
+        <label for="phone">Teléfono</label>
+        <input appWxInput formControlName="phone" type="tel" name="phone" id="phone">
+        <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'phone'}"></ng-container>
+
+    </fieldset>
+
+    <fieldset>
+        <label for="password">Contraseña</label>
+        <input appWxInput formControlName="password" type="password" name="password" id="password">
+        <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'password'}"></ng-container>
+
+        <label for="password-confirm">Confirmar contraseña</label>
+        <input type="password" name="password-confirm" id="password-confirm">
+        <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'password'}"></ng-container>
+
+    </fieldset>
+
+    <app-input-search [list]="countrys | async" propName="name"> </app-input-search>
+    <button type="submit">
+        Registrar
+    </button>
+
+
+</form>
+
+
+<ng-template let-name="name" let-control="control" #errorsTemplate>
+    <div *ngIf="hasError(control, 'required')">{{ name }} Campo requerido</div>
+    <div *ngIf="hasError(control, 'pattern')">{{ name }} Formato inválido</div>
+    <div *ngIf="hasError(control, 'maxlength')">No debe exceder el límite de
+        {{ profileForm.controls[control].errors?.maxlength.requiredLength }} caracteres
+    </div>
+</ng-template>
