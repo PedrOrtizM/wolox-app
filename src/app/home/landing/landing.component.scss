@@ -1,0 +1,56 @@
+#section-welcome {
+    margin-top: 15%;
+}
+#section-follow {
+  background-color: #F2F5FA;
+}
+
+.m-10 {
+    margin: 10% ;
+}
+
+.img-hero {
+    width: 55%;
+    transform: rotateY(180deg);
+}
+
+.container-follows{
+    text-align: center;
+    background-image: url('../../../assets/img/img-woloxer.png');
+    background-size: cover;
+    height: 60vw;
+}
+
+hr{
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 6% auto;
+}
+
+@media (min-width: 1024px) {
+    #section-welcome {
+        margin-top: 8%;
+        margin-bottom: 5%;
+        h1{
+            padding-top: 5%;
+        }
+      
+    }
+    // .col-12{
+    //     width: 50%;
+    // }
+    // #section-benefits{
+    //     .col-12{
+    //         width: percentage(1/6);
+    //     }
+    // }
+    .container-follows{
+        height: 30vw;
+    }
+}
+
+footer{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+}
