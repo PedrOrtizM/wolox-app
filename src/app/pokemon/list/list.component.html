@@ -1,0 +1,46 @@
+<h3>Lista de pokemons</h3>
+
+<fieldset>
+    <input aria-label="Search"  type="text" name="search" [(ngModel)]="inputSearch">
+    <button (click)="searchPokemon()" type="submit">Buscar </button>
+    <div *ngIf="pokemon">
+        <ul>
+            <li>Nombre:  {{ pokemon?.name}} </li>
+            <li>Id:  {{ pokemon?.id}} </li>
+            <li>Altura:  {{ pokemon?.height}} </li>
+            <li>Peso:  {{ pokemon?.weight}} </li>
+        </ul>  
+    </div>
+</fieldset>
+
+<ul>
+    <li *ngFor="let item of list; let i = index">
+        <!-- <input type="checkbox" [name]="'pokemon'+i" [id]="'pokemon'+i"> -->
+        <button (click)="addTocompare(item)"> Comparar </button>
+        {{ item.name}}
+    </li>
+</ul>
+
+
+<ul>
+    <button routerLink="comparar">Ir a comparar</button>
+    <li *ngFor="let item of listToCompare; let i = index">
+        <!-- <input type="checkbox" [name]="'pokemon'+i" [id]="'pokemon'+i"> -->
+        <button (click)="removeToCompare(item)"> Eliminar </button>
+        {{ item.name}}
+    </li>
+</ul>
+
+<div>
+    <select [(ngModel)]="limit" (ngModelChange)="changeLimit()" name="limit" id="limit">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+    </select>
+    <button [disabled]="offset===0" (click)="previousPage()">Atrás</button>
+    <span> {{(offset / limit ) + 1}} </span>
+    <button [disabled]="list.length != limit" (click)="nextPage()">Siguiente </button>
+
+</div>
