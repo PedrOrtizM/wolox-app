@@ -16,9 +16,11 @@ export class NavbarComponent implements OnInit {
   constructor(private rederer: Renderer2) { }
 
   public ngOnInit(): void {
-    this.scrollWindow = fromEvent(window, 'scroll').subscribe(() => 
-      this.rederer.addClass(this.headerNav.nativeElement, 'nav-white')
-    );
+    this.scrollWindow = fromEvent(window, 'scroll')
+    .subscribe(() => {
+      this.rederer.addClass(this.headerNav.nativeElement, 'nav-white');
+
+    });
   }
 
   ngOnDestroy() {

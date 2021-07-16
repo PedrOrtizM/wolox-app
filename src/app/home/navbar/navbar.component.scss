@@ -9,13 +9,19 @@ nav {
   background-color: transparent;
   z-index: 1;
 
-  .img-container {
-    display: inline-block;
-    margin-left: 6%;
-    margin-top: 1%;
+  .container-nav {
+    padding: 4%;
+    display: flex;
+    align-items: center;
 
-    img {
-      width: 38%;
+    .img-container {
+      display: inline-block;
+      margin-left: 6%;
+      margin-top: 1%;
+
+      img {
+        width: 38%;
+      }
     }
   }
 
@@ -38,6 +44,12 @@ nav {
 .nav-white {
   background: white;
 }
+
+.hidden {
+  position: absolute;
+  opacity: 0;
+}
+
 input:checked~ul {
   display: block;
   background-color: ghostwhite;
@@ -53,7 +65,16 @@ input:checked~ul {
     align-items: center;
     justify-content: space-between;
     padding-top: 2%;
-
+    .container-nav {
+      padding: 0;
+      .img-container {
+        margin-left: 13%;
+        margin-top: 1%;
+        img {
+          width: 45%;
+        }
+      }
+    }
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -71,15 +92,18 @@ input:checked~ul {
           color: #323A4D;
         }
       }
+
       li:last-child {
         width: 30%;
+
         button {
           width: 100%;
         }
       }
     }
   }
-  input {
+  #toggle, #label-menu{
     display: none;
-  }
+  } 
+
 }

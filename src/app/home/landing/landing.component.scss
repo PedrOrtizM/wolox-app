@@ -22,6 +22,7 @@ header {
     background-image: url('../../../assets/img/img-woloxer.png');
     background-size: cover;
     padding-bottom: 10%;
+
     p,
     a {
       font-size: 20px;
@@ -60,7 +61,8 @@ header {
   }
 
   a {
-    min-width: 25%;
+    min-width: 18%;
+    display: inline-block;
   }
 }
 
@@ -74,10 +76,9 @@ header {
     margin-bottom: 5%;
 
     h1 {
-      padding-top: 5%;
-      padding-left: 5%;
+      padding-top: 11%;
+      padding-left: 2%;
     }
-
   }
 
   #section-benefits {
@@ -89,15 +90,14 @@ header {
       font-weight: 600;
       padding: 0 15%;
       font-size: 20px;
-
     }
-
   }
 
   #section-follow {
     .container-follows {
       height: 30vw;
       padding-bottom: 0;
+
       h1 {
         font-size: 50px;
         font-weight: 600;

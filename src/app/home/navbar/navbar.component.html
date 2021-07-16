@@ -1,10 +1,14 @@
 <nav #headerNav>
-    <input id="check" type="checkbox">
-    <div class="img-container">
-        <img src="../../../assets/img/logo_full_color.svg" alt="logo_full_color.svg">
+    <div class="container-nav">
+        <label id="label-menu" for="toggle">
+            <i class="fas fa-bars fa-2x"></i>
+        </label>
+        <div class="img-container">
+            <img src="../../../assets/img/logo_full_color.svg" alt="logo_full_color.svg">
+        </div>
     </div>
-
-    <ul>
+    <input type="checkbox" id="toggle" class="hidden">
+    <ul id="menu">
         <li>
             <a href="#home">
                 Inicio
