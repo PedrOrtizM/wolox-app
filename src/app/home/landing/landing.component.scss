@@ -1,56 +1,113 @@
-#section-welcome {
-    margin-top: 15%;
+// --------------------------------------------
+//                  Mobile
+// --------------------------------------------
+header {
+  background-image: url(../../../assets/img/Bg_Header.png);
 }
+
+#section-welcome {
+  padding-top: 15%;
+
+  .img-hero {
+    width: 53%;
+    transform: rotateY(180deg);
+  }
+}
+
 #section-follow {
   background-color: #F2F5FA;
-}
 
-.m-10 {
-    margin: 10% ;
-}
-
-.img-hero {
-    width: 55%;
-    transform: rotateY(180deg);
-}
-
-.container-follows{
+  .container-follows {
     text-align: center;
     background-image: url('../../../assets/img/img-woloxer.png');
     background-size: cover;
-    height: 60vw;
+    padding-bottom: 10%;
+    p,
+    a {
+      font-size: 20px;
+    }
+
+    a {
+      min-width: 35%;
+    }
+
+  }
 }
 
-hr{
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1), 0 0 5px 0 rgba(0, 0, 0, 0.1);
-    width: 90%;
-    margin: 6% auto;
+#section-benefits {
+  h2 {
+    margin: 7% 0;
+    font-weight: 600;
+    font-size: 29px;
+  }
+
+  .container {
+    padding: 0 10%;
+  }
 }
 
+#section-thanks {
+  color: black;
+  background-image: url(../../../assets/img/Bg_Header.png);
+
+  h1 {
+    margin-bottom: 0;
+  }
+
+  h2 {
+    font-weight: 500;
+    margin-top: 1%;
+  }
+
+  a {
+    min-width: 25%;
+  }
+}
+
+
+// --------------------------------------------
+//                  Desk
+// --------------------------------------------
 @media (min-width: 1024px) {
-    #section-welcome {
-        margin-top: 8%;
-        margin-bottom: 5%;
-        h1{
-            padding-top: 5%;
-        }
-      
+  #section-welcome {
+    padding-top: 10%;
+    margin-bottom: 5%;
+
+    h1 {
+      padding-top: 5%;
+      padding-left: 5%;
     }
-    // .col-12{
-    //     width: 50%;
-    // }
-    // #section-benefits{
-    //     .col-12{
-    //         width: percentage(1/6);
-    //     }
-    // }
-    .container-follows{
-        height: 30vw;
+
+  }
+
+  #section-benefits {
+    .container {
+      padding: 0 3%;
     }
+
+    .title {
+      font-weight: 600;
+      padding: 0 15%;
+      font-size: 20px;
+
+    }
+
+  }
+
+  #section-follow {
+    .container-follows {
+      height: 30vw;
+      padding-bottom: 0;
+      h1 {
+        font-size: 50px;
+        font-weight: 600;
+      }
+    }
+  }
 }
 
-footer{
-    margin-top: 5%;
-    margin-bottom: 5%;
-    text-align: center;
+footer {
+  margin-top: 10%;
+  margin-bottom: 2%;
+  text-align: center;
 }

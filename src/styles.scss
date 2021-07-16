@@ -1,88 +1,81 @@
 /* You can add global styles to this file, and also import other style files */
-html {
-    scroll-behavior: smooth;
+@import url(./wolox-theme.scss);
+
+.bg-white {
+  background: white;
 }
-h1 {
-    font-size: 2.6em;
+
+.m-10 {
+  margin: 10%;
 }
-body {
-    margin: 0;
+
+.fw-600 {
+  font-weight: 600;
 }
-a {
-    color: black;
-    text-decoration: none;
-}
-ul {
-    list-style: none;
-}
+
 .d-flex {
-    display: flex;
+  display: flex;
 }
-.flex-d-col{
-    flex-direction: column;
+
+.flex-d-col {
+  flex-direction: column;
 }
+
 .jc-center {
-    justify-content: center;
+  justify-content: center;
 }
+
 .ai-center {
-    align-items: center;
+  align-items: center;
 }
+
 .ai-baseline {
-    align-items: baseline;
+  align-items: baseline;
 }
+
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .color-green {
-    color: rgb(159, 199, 57);
+  color: rgb(159, 199, 57);
 }
+
 .color-blue {
-    color: rgb(0, 167, 232);
+  color: rgb(0, 167, 232);
 }
+
 .color-white {
-    color: white;
+  color: white;
 }
 
-input {
-    border-style: solid;
-}
-.input-invalid {
-    border-color: red;
-}
-
-input:focus.input-invalid {
-    border-color: red;
-    outline: yellow;
-}
-
+// Grid
 .container {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
+
 @mixin create-col($size, $columns) {
-    flex: 0 0 auto;
-    width: percentage($size / $columns);
+  flex: 0 0 auto;
+  width: percentage($size / $columns);
 }
 
 @media (min-width: 300px) {
-    @for $i from 1 through 12 {
-        .col-m-#{$i} {
-            @include create-col($i, 12);
-        }
+  @for $i from 1 through 12 {
+    .col-m-#{$i} {
+      @include create-col($i, 12);
     }
+  }
 }
 
 @media (min-width: 1024px) {
-    @for $i from 1 through 12 {
-        .col-#{$i} {
-            @include create-col($i, 12);
-        }
+  @for $i from 1 through 12 {
+    .col-#{$i} {
+      @include create-col($i, 12);
     }
+  }
 }
 
-
-
 .col {
-    flex: 1 0 0%;
+  flex: 1 0 0%;
 }

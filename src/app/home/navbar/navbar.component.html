@@ -1,25 +1,24 @@
-<nav>
+<nav #headerNav>
     <input id="check" type="checkbox">
     <div class="img-container">
-        <img width="140px"  src="../../../assets/img/logo_full_color.svg" alt="logo_full_color.svg">
+        <img src="../../../assets/img/logo_full_color.svg" alt="logo_full_color.svg">
     </div>
+
     <ul>
-     
         <li>
-            <a >
+            <a href="#home">
                 Inicio
             </a>
         </li>
-        <li >
-            <a href="#section-thanks">
+        <li>
+            <a href="#section-benefits">
                 Beneficios
             </a>
         </li>
         <li>
-            <a routerLink="/registro">
+            <button class="btn btn-secondary" routerLink="/registro">
                 Registro
-            </a>
-            
+            </button>
         </li>
     </ul>
 </nav>

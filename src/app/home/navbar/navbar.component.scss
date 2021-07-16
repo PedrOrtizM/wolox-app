@@ -1,55 +1,85 @@
+// --------------------------------------------
+//                  Mobile
+// --------------------------------------------
 nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    height: 15%;
-    background-color: white ;
-    z-index: 1;
-    ul {
-        display: none;
-        padding: 0 20px;
-        overflow: hidden;
-        li {
-            padding: 10px 0;
-            border-bottom: 1px solid white;
-            a {
-                color: rgb(0, 167, 232);
-            }
-        }
-    }
-}
+  position: fixed;
+  width: 100%;
+  top: 0;
+  height: 15%;
+  background-color: transparent;
+  z-index: 1;
 
-.img-container {
+  .img-container {
     display: inline-block;
-    margin-left: 4%;
+    margin-left: 6%;
+    margin-top: 1%;
+
+    img {
+      width: 38%;
+    }
+  }
+
+  ul {
+    display: none;
+    padding: 0 20px;
+    overflow: hidden;
+
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid white;
+
+      a {
+        color: rgb(0, 167, 232);
+      }
+    }
+  }
 }
 
-input:checked ~ ul {
-    display: block;
-    background-color: ghostwhite;
+.nav-white {
+  background: white;
+}
+input:checked~ul {
+  display: block;
+  background-color: ghostwhite;
 }
 
+// --------------------------------------------
+//                  Desk
+// --------------------------------------------
 @media (min-width: 1024px) {
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: space-between;
-        ul {
-            display: flex;
-            flex-wrap: wrap;
-            li{
-                border: none;
-                margin-right: 30px;
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2%;
 
-                a{
-                    font-size: 19px;
-                    color: black;
-                }
-            }
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      flex-grow: 1;
+      justify-content: flex-end;
+      align-items: center;
+
+      li {
+        border: none;
+        margin-right: 8.5%;
+
+        a {
+          font-size: 20px;
+          font-weight: 600;
+          color: #323A4D;
         }
+      }
+      li:last-child {
+        width: 30%;
+        button {
+          width: 100%;
+        }
+      }
     }
-    input{
-        display: none;
-    }
+  }
+  input {
+    display: none;
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
+import { fromEvent, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  public scrollWindow: Subscription | any;
+  @ViewChild('headerNav') headerNav: ElementRef | any;
+
+
+  constructor(private rederer: Renderer2) { }
+
+  public ngOnInit(): void {
+    this.scrollWindow = fromEvent(window, 'scroll').subscribe(() => 
+      this.rederer.addClass(this.headerNav.nativeElement, 'nav-white')
+    );
   }
 
+  ngOnDestroy() {
+    this.scrollWindow.unsubscribe();
+  }
 }
