@@ -17,6 +17,15 @@ hr {
   margin: 5% auto;
 }
 
+fieldset{
+  border: 2px solid rgba(0, 166, 232, 0.486);
+  padding: 2%;
+  margin-bottom: 2.5%;
+}
+legend{
+  font-weight: 600;
+}
+
 .btn {
   background-color: transparent;
   border-radius: 25px;
@@ -81,14 +90,27 @@ ul {
 }
 
 input {
-  border-style: solid;
+    font-size: 16px;
+    padding: 14px 20px;
+    border: 1px solid #ddd;
+  
 }
-
-.input-invalid {
+input:focus{
+  background-color: rgba(234, 249, 255, 0.753);
+}
+.ng-invalid.ng-touched {
   border-color: red;
 }
 
 input:focus.input-invalid {
   border-color: red;
   outline: yellow;
+}
+
+
+.error-message{
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 600;
+  color: red;
 }

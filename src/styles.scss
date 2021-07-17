@@ -79,3 +79,28 @@
 .col {
   flex: 1 0 0%;
 }
+
+section.page {
+  background-color: whitesmoke;
+
+  h2 {
+    margin: 0;
+    padding: 3% 8%;
+    font-weight: 600;
+  }
+  .secion-body{
+    padding: 5%;
+    color: black;
+    background-color: white;
+    margin: auto;
+  }
+}
+
+.img-container {
+  padding: 2%;
+
+  img {
+    width: 200px;
+    cursor: pointer;
+  }
+}

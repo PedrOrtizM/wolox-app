@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 
 @Component({
   selector: 'app-input-search',
@@ -8,18 +9,22 @@ import { Component, Input, OnInit } from '@angular/core';
 export class InputSearchComponent implements OnInit {
   public isActive = false;
   public inputValue = '';
-  @Input() list:any = [];
-  @Input() propName:any;
-  constructor() { }
+  @Input() list: any = [];
+  @Input() propName: any;
+  @Output('changeValue') changeValue: EventEmitter<Object>;
+  constructor() {
+    this.changeValue = new EventEmitter();
+  }
 
   ngOnInit(): void {
   }
-  showItems(event : any) {
+  showItems(event: any) {
     this.isActive = true;
   }
-  click(country: any) {
+  click({ name, capital }: any) {
     this.isActive = false;
-    this.inputValue = country['name']
+    this.inputValue = name;
+    this.changeValue.emit({ name, province: capital })
   }
 
 }

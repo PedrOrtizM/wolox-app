@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
@@ -16,11 +17,17 @@ export class NavbarComponent implements OnInit {
   constructor(private rederer: Renderer2) { }
 
   public ngOnInit(): void {
-    this.scrollWindow = fromEvent(window, 'scroll')
-    .subscribe(() => {
-      this.rederer.addClass(this.headerNav.nativeElement, 'nav-white');
+    this.subscribeScroll();
+  }
 
-    });
+  public subscribeScroll() {
+    this.scrollWindow = fromEvent(window, 'scroll')
+      .pipe(map(() => document.documentElement.scrollTop > 80))
+      .subscribe((addClass) => {
+        addClass ?
+          this.rederer.addClass(this.headerNav.nativeElement, 'nav-white') :
+          this.rederer.removeClass(this.headerNav.nativeElement, 'nav-white');  
+      });
   }
 
   ngOnDestroy() {

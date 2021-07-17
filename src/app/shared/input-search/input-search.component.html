@@ -1,6 +1,6 @@
 <div class="container-input">
 
-  <input (focus)="showItems($event)" [(ngModel)]="inputValue" type="text" placeholder="Buscar.." id="input-search">
+  <input autocomplete="off" (focus)="showItems($event)" [(ngModel)]="inputValue" type="text" placeholder="Buscar.." id="input-search">
 
   <ul *ngIf="isActive">
     <li *ngFor="let country of list | filter :propName || '':inputValue " (click)="click(country)">

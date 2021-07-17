@@ -1,0 +1,33 @@
+section {
+
+  .col-6 {
+    margin: 2% 0;
+  }
+
+  app-input-search {
+    width: 80%;
+  }
+
+  label {
+    display: block;
+  }
+
+  input {
+    width: 80%;
+  }
+
+}
+
+
+button{
+    margin-top: 2%;
+    min-width: 220px;
+}
+
+@media(min-width: 1024px) {
+  section {
+    input {
+      width: 70%;
+    }
+  }
+}

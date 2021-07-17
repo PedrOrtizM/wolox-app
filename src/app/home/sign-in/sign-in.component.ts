@@ -37,4 +37,10 @@ export class SignInComponent implements OnInit {
     const control = this.profileForm.controls[controlName];
     return control?.hasError(type) && control.dirty;
   }
+
+  public changeCountry({name,province} : any){
+   this.profileForm.get('country')?.setValue(name);
+   this.profileForm.get('province')?.setValue(province);
+
+  }
 }
