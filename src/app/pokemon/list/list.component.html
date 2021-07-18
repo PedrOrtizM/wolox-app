@@ -1,46 +1,81 @@
-<h3>Lista de pokemons</h3>
+<section class="page">
+    <h2>Lista de pokemons</h2>
+    <div class="col-9 section-body">
+        <div class="container-search">
+            <input id="search" aria-label="Buscar" type="text" name="buscar" [(ngModel)]="inputSearch">
+            <button class="btn btn-primary" (click)="searchPokemon()" type="submit">Buscar </button>
+            <div *ngIf="pokemon">
+                <ul>
+                    <li> <img [src]="pokemon.sprites.front_default" alt="pokemon-img"></li>
+                    <li> <span class="fw-600"> Nombre:</span> {{ pokemon?.name}} </li>
+                    <li> <span class="fw-600"> Id:</span> {{ pokemon?.id}} </li>
+                    <li> <span class="fw-600"> Altura:</span> {{ pokemon?.height}} </li>
+                    <li> <span class="fw-600"> Peso:</span> {{ pokemon?.weight}} </li>
+                </ul>
+            </div>
+            <p *ngIf="isSearch">
+                No se encontró pokemon con ese nombre / id
+            </p>
+        </div>
+        <div class="container">
+            <div class="col-5 list">
+                <p class="fw-600 col-12">Nombre</p>
+                <ul class="list-scroll">
 
-<fieldset>
-    <input aria-label="Search"  type="text" name="search" [(ngModel)]="inputSearch">
-    <button (click)="searchPokemon()" type="submit">Buscar </button>
-    <div *ngIf="pokemon">
-        <ul>
-            <li>Nombre:  {{ pokemon?.name}} </li>
-            <li>Id:  {{ pokemon?.id}} </li>
-            <li>Altura:  {{ pokemon?.height}} </li>
-            <li>Peso:  {{ pokemon?.weight}} </li>
-        </ul>  
+                    <li *ngFor="let item of list; let i = index">
+                        <!-- <input [checked]="item.checked" (change)="checkValue(item,$event)" type="checkbox" [name]="'pokemon'+i" [id]="'pokemon'+i"> -->
+
+                        <span *ngIf="pokemonService.listToCompare.length!=3" class="icon" (click)="addTocompare(item)">
+                            <i class="fas fa-plus-circle"></i>
+                        </span>
+                        <p> {{ offset+i+1 }}. {{ item.name}}</p>
+
+                    </li>
+                </ul>
+
+                <div class="d-flex ai-center jc-center fw-wrap">
+                    <button class="btn btn-secondary" [disabled]="offset===0" (click)="previousPage()">
+                        <i class="fas fa-chevron-circle-left"></i>
+                    </button>
+                    <span style="font-size: 20px; margin: 0 20px"> {{(offset / limit ) + 1}} </span>
+                    <button class="btn btn-secondary" [disabled]="list.length != limit" (click)="nextPage()">
+                        <i class="fas fa-chevron-circle-right"></i>
+                    </button>
+                    <select [(ngModel)]="limit" (ngModelChange)="changeLimit()" name="limit" id="limit">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="col-m-12 col-4">
+                <p class="fw-600">Lista a comparar</p>
+                <ul class="list">
+                    <li *ngFor="let item of pokemonService.listToCompare; let i = index">
+                        <span class="icon" (click)="removeToCompare(i)">
+                            <i class="fas fa-trash-alt"></i>
+                        </span>
+                        <p>
+                            {{ item.name}}
+                        </p>
+                     
+                    </li>
+                </ul>
+                <div class="container-btn">
+                    <button *ngIf="pokemonService.listToCompare.length >= 2" class="btn btn-primary"
+                        routerLink="comparar">Ir a comparar</button>
+                </div>
+         
+            </div>
+
+        </div>
+
+
     </div>
-</fieldset>
 
-<ul>
-    <li *ngFor="let item of list; let i = index">
-        <!-- <input type="checkbox" [name]="'pokemon'+i" [id]="'pokemon'+i"> -->
-        <button (click)="addTocompare(item)"> Comparar </button>
-        {{ item.name}}
-    </li>
-</ul>
-
-
-<ul>
-    <button routerLink="comparar">Ir a comparar</button>
-    <li *ngFor="let item of listToCompare; let i = index">
-        <!-- <input type="checkbox" [name]="'pokemon'+i" [id]="'pokemon'+i"> -->
-        <button (click)="removeToCompare(item)"> Eliminar </button>
-        {{ item.name}}
-    </li>
-</ul>
-
-<div>
-    <select [(ngModel)]="limit" (ngModelChange)="changeLimit()" name="limit" id="limit">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-    </select>
-    <button [disabled]="offset===0" (click)="previousPage()">Atrás</button>
-    <span> {{(offset / limit ) + 1}} </span>
-    <button [disabled]="list.length != limit" (click)="nextPage()">Siguiente </button>
-
-</div>
+</section>

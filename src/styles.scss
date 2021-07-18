@@ -24,6 +24,9 @@
 .jc-center {
   justify-content: center;
 }
+.fw-wrap{
+  flex-wrap: wrap;
+}
 
 .ai-center {
   align-items: center;
@@ -82,13 +85,13 @@
 
 section.page {
   background-color: whitesmoke;
-
+  height: 90vh;
   h2 {
     margin: 0;
     padding: 3% 8%;
     font-weight: 600;
   }
-  .secion-body{
+  .section-body{
     padding: 5%;
     color: black;
     background-color: white;
