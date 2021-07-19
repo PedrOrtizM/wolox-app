@@ -20,7 +20,7 @@ export class NavbarComponent implements OnInit {
 
   public ngOnInit(): void {
     this.subscribeScroll();
-    this.isAuth = this.persistenceService.token ? true : false
+    this.isAuth = !!this.persistenceService.token;
   }
 
   public subscribeScroll() {

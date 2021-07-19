@@ -1,13 +1,13 @@
 <div class="img-container">
     <img routerLink="/" src="../../../assets/img/logo_full_color.svg" alt="logo_full_color.svg">
 </div>
-    
+
 <section class="page">
     <h2>Lista de pokemons</h2>
     <div class="col-9 section-body">
         <div class="container-search">
             <input id="search" aria-label="Buscar" type="text" name="buscar" [(ngModel)]="inputSearch">
-            <button class="btn btn-primary" (click)="searchPokemon()" type="submit">Buscar </button>
+            <button id="btn-search" class="btn btn-primary" (click)="searchPokemon()" type="submit">Buscar </button>
             <div *ngIf="pokemon">
                 <ul>
                     <li> <img [src]="pokemon.sprites.front_default" alt="pokemon-img"></li>
@@ -30,7 +30,8 @@
 
                     <li *ngFor="let pokemon of pokemonList; let i = index">
 
-                        <span *ngIf="pokemonService.listToCompare.length!=3" class="icon" (click)="addTocompare(pokemon)">
+                        <span *ngIf="pokemonService.listToCompare.length!=3" class="icon"
+                            (click)="addTocompare(pokemon)">
                             <i class="fas fa-plus-circle"></i>
                         </span>
                         <p> {{ offset+i+1 }}. {{ pokemon.name}}</p>
@@ -68,14 +69,14 @@
                         <p>
                             {{ pokemon.name}}
                         </p>
-                     
+
                     </li>
                 </ul>
                 <div class="container-btn">
                     <button *ngIf="pokemonService.listToCompare.length >= 2" class="btn btn-primary"
                         routerLink="comparar">Ir a comparar</button>
                 </div>
-         
+
             </div>
 
         </div>

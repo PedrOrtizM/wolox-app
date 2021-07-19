@@ -13,4 +13,11 @@ describe('PersistenceService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('Should set token private', () => {
+    service.token = 'ABCD';
+
+    expect(service['_token']).toBe('ABCD')
+  });
+  
 });

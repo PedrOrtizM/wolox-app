@@ -19,8 +19,8 @@ export class UserService {
     );
   }
 
-  public getCountryList(){
-    return this.http.get<Array<ICountry>>('https://restcountries.eu/rest/v2/all')
-  } 
+  public getCountryList() {
+    return this.http.get<Array<ICountry>>(environment.countryUrl + 'all')
+  }
 
 }

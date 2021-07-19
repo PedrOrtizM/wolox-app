@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   userUrl: 'https://private-8e8921-woloxfrontendinverview.apiary-mock.com/',
-  pokemonUrl: 'https://pokeapi.co/api/v2/pokemon'
+  pokemonUrl: 'https://pokeapi.co/api/v2/pokemon',
+  countryUrl: 'https://restcountries.eu/rest/v2/'
 };
 
 /*

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../../core/services/pokemon/pokemon.service';
-import { IPokemon, IPokemonDetail } from '../../core/models/pokemon.interface';
+import { IPokemonDetail } from '../../core/models/pokemon.interface';
 
 @Component({
   selector: 'app-compare',

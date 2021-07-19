@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
     this.getPokemonList();
   }
 
-  private getPokemonList() {
+  private getPokemonList(): void {
 
     this.pokemonService.getPokemonList(this.limit, this.offset).subscribe(({ results }) => {
       this.pokemonList = results;
