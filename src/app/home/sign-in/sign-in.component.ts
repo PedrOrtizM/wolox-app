@@ -27,8 +27,9 @@ export class SignInComponent implements OnInit {
       province: new FormControl('', [Validators.required]),
       mail: new FormControl('', [Validators.required, Validators.pattern(emailRegex)]),
       phone: new FormControl('', [Validators.required, Validators.pattern(phoneRegex), Validators.maxLength(10)]),
-      password: new FormControl('', [Validators.required]),
-      passwordConfirm: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required,Validators.minLength(6)]),
+      passwordConfirm: new FormControl('', [Validators.required,Validators.minLength(6)]),
+      tyc: new FormControl(false, [Validators.requiredTrue]),
     }, validateEqualsPass);
 
   }
@@ -39,10 +40,10 @@ export class SignInComponent implements OnInit {
   }
 
   public signIn(): void {
-
-    const { passwordConfirm, ...body } = this.profileForm.value;;
-    this.userService.postSignUp(body)
-      .subscribe(() => this.router.navigate(['/pokemon']));
+    
+     const { passwordConfirm,tyc, ...body } = this.profileForm.value;;
+     this.userService.postSignUp(body)
+       .subscribe(() => this.router.navigate(['/pokemon']));
 
   }
   public hasError(controlName: string, type: string) {

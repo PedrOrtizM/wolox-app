@@ -1,6 +1,7 @@
 import { Component, OnInit, Renderer2, ViewChild, ElementRef } from '@angular/core';
 import { fromEvent, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { PersistenceService } from '../../core/services/persistence/persistence.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,13 +12,15 @@ export class NavbarComponent implements OnInit {
 
 
   public scrollWindow: Subscription | any;
+  public isAuth: boolean = false;
   @ViewChild('headerNav') headerNav: ElementRef | any;
 
 
-  constructor(private rederer: Renderer2) { }
+  constructor(private rederer: Renderer2, private persistenceService:PersistenceService) { }
 
   public ngOnInit(): void {
     this.subscribeScroll();
+    this.isAuth = this.persistenceService.token ? true : false
   }
 
   public subscribeScroll() {

@@ -14,6 +14,12 @@
             <li><p> <span class="fw-600"> Id: </span> {{ pokemon?.id}}  </p>  </li>
             <li><p> <span class="fw-600"> Altura: </span> {{ pokemon?.height}}  </p>  </li>
             <li><p> <span class="fw-600"> Peso: </span> {{ pokemon?.weight}}  </p>  </li>
+            <li *ngFor="let pokemon of pokemon?.types">
+                <p> <span class="fw-600"> Tipo{{pokemon.slot}}: </span> {{ pokemon?.type?.name }}  </p>  
+            </li>
+            <li *ngFor="let pokemon of pokemon?.moves | slice:0:10">
+                <p> <span class="fw-600"> Movimiento: </span> {{ pokemon?.move?.name }}  </p>  
+            </li>
       
         </ul>
 

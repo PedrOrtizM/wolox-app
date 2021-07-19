@@ -19,9 +19,14 @@
                 Beneficios
             </a>
         </li>
-        <li>
+        <li *ngIf="!isAuth">
             <button class="btn btn-secondary" routerLink="/registro">
                 Registro
+            </button>
+        </li>
+        <li *ngIf="isAuth">
+            <button class="btn btn-secondary" routerLink="/pokemon">
+                Pokemon
             </button>
         </li>
     </ul>

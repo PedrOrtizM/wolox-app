@@ -62,14 +62,21 @@
             <div class="col-m-12 col-6">
                 <label for="password-confirm">Confirmar contraseña*</label>
                 <input formControlName="passwordConfirm" type="password" name="password-confirm" id="password-confirm">
-                <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'password'}"></ng-container>
+                <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'passwordConfirm'}"></ng-container>
+            </div>
+
+            <div class="d-flex col-m-12 col-6">
+                <input formControlName="tyc" type="checkbox" id="tyc-label">
+                <label routerLink="/terminos"> 
+                    <u>Acepto Términos y Condiciones</u>
+                </label>
             </div>
 
         </fieldset>
-
+  
 
         <div class="text-center">
-            <button [disabled]="profileForm.invalid" class="btn btn-primary" type="submit">
+            <button class="btn btn-primary" type="submit">
                 Registrar
             </button>
         </div>
@@ -88,5 +95,8 @@
     <div class="error-message" *ngIf="hasError(control, 'equals')">{{ name }} No coinciden las contraseñas</div>
     <div class="error-message" *ngIf="hasError(control, 'maxlength')">No debe exceder el límite de
         {{ profileForm.controls[control].errors?.maxlength.requiredLength }} caracteres
+    </div>
+    <div class="error-message" *ngIf="hasError(control, 'minlength')">Debe contener al menos
+        {{ profileForm.controls[control].errors?.minlength.requiredLength }} caracteres
     </div>
 </ng-template>

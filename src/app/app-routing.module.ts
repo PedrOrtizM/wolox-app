@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -8,8 +9,14 @@ const routes: Routes = [
   },
   {
     path: 'pokemon', 
-    loadChildren: () => import('./pokemon/pokemon.module').then(m => m.PokemonModule)
+    loadChildren: () => import('./pokemon/pokemon.module').then(m => m.PokemonModule),
+    canLoad:[AuthGuard]
   },
+  {
+    path:'**',
+    redirectTo: ''
+  }
+  
 ];
 
 @NgModule({

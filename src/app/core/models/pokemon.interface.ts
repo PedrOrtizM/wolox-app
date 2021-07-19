@@ -13,6 +13,22 @@ export interface IPokemonDetail{
     sprites:{
         front_default:string;
     }
+    types:Array<IType>
+    moves:Array<IMove>
+}
+
+interface IType{
+    type:{
+        name:string;
+    };
+    slot:number;
+}
+
+
+interface IMove{
+    move:{
+        name:string;
+    };
 }
 
 export interface IPokemon{

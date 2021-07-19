@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'comparar',
     component: CompareComponent
+  },
+  {
+    path:'**',
+    redirectTo: ''
   }
 ];
 

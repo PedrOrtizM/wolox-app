@@ -6,6 +6,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
+import { TermsComponent } from './terms/terms.component';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from '../shared/shared.module';
   declarations: [
     LandingComponent,
     SignInComponent,
-    NavbarComponent
+    NavbarComponent,
+    TermsComponent
   ],
   imports: [
     CommonModule,
