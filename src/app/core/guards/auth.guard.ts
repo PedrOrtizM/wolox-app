@@ -1,23 +1,33 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree, Router, CanLoad, Route, UrlSegment } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ActivatedRouteSnapshot, CanActivate, Router, CanLoad } from '@angular/router';
 import { PersistenceService } from '../services/persistence/persistence.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanLoad {
+export class AuthGuard implements CanLoad, CanActivate {
+
   constructor(private persistenceService: PersistenceService, private router: Router) { }
-   canLoad(route: Route): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    
-     if (this.persistenceService.token && route.path === 'registro') {
-       this.router.navigate(['/pokemon']);
-       return false;
-     }
-     if(!this.persistenceService.token){
+
+  canLoad(): boolean {
+
+    if (!this.persistenceService.token) {
       this.router.navigate(['/']);
-     }
-     return this.persistenceService.token ? true : false;
-   }
+    }
+    return !!this.persistenceService.token;
+  }
+
+  canActivate(
+    route: ActivatedRouteSnapshot): boolean {
+
+    const [{ path }] = route.url;
+
+    if (this.persistenceService.token && path === 'registro') {
+      this.router.navigate(['/pokemon']);
+      return false;
+    }
+
+    return !!!this.persistenceService.token;
+  }
 
 }

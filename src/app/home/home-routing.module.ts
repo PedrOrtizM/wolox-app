@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { TermsComponent } from './terms/terms.component';
+import { AuthGuard } from '../core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
   },
   {
     path: 'registro',
-    component: SignInComponent
+    component: SignInComponent,
+    canActivate:[AuthGuard]
   },
   {
     path: 'terminos',
