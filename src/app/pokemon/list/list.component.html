@@ -1,3 +1,7 @@
+<div class="img-container">
+    <img routerLink="/" src="../../../assets/img/logo_full_color.svg" alt="logo_full_color.svg">
+</div>
+    
 <section class="page">
     <h2>Lista de pokemons</h2>
     <div class="col-9 section-body">
@@ -22,13 +26,12 @@
                 <p class="fw-600 col-12">Nombre</p>
                 <ul class="list-scroll">
 
-                    <li *ngFor="let item of list; let i = index">
-                        <!-- <input [checked]="item.checked" (change)="checkValue(item,$event)" type="checkbox" [name]="'pokemon'+i" [id]="'pokemon'+i"> -->
+                    <li *ngFor="let pokemon of pokemonList; let i = index">
 
-                        <span *ngIf="pokemonService.listToCompare.length!=3" class="icon" (click)="addTocompare(item)">
+                        <span *ngIf="pokemonService.listToCompare.length!=3" class="icon" (click)="addTocompare(pokemon)">
                             <i class="fas fa-plus-circle"></i>
                         </span>
-                        <p> {{ offset+i+1 }}. {{ item.name}}</p>
+                        <p> {{ offset+i+1 }}. {{ pokemon.name}}</p>
 
                     </li>
                 </ul>
@@ -37,8 +40,8 @@
                     <button class="btn btn-secondary" [disabled]="offset===0" (click)="previousPage()">
                         <i class="fas fa-chevron-circle-left"></i>
                     </button>
-                    <span style="font-size: 20px; margin: 0 20px"> {{(offset / limit ) + 1}} </span>
-                    <button class="btn btn-secondary" [disabled]="list.length != limit" (click)="nextPage()">
+                    <span class="number-page"> {{(offset / limit ) + 1}} </span>
+                    <button class="btn btn-secondary" [disabled]="pokemonList.length != limit" (click)="nextPage()">
                         <i class="fas fa-chevron-circle-right"></i>
                     </button>
                     <select [(ngModel)]="limit" (ngModelChange)="changeLimit()" name="limit" id="limit">
@@ -56,12 +59,12 @@
             <div class="col-m-12 col-4">
                 <p class="fw-600">Lista a comparar</p>
                 <ul class="list">
-                    <li *ngFor="let item of pokemonService.listToCompare; let i = index">
+                    <li *ngFor="let pokemon of pokemonService.listToCompare; let i = index">
                         <span class="icon" (click)="removeToCompare(i)">
                             <i class="fas fa-trash-alt"></i>
                         </span>
                         <p>
-                            {{ item.name}}
+                            {{ pokemon.name}}
                         </p>
                      
                     </li>

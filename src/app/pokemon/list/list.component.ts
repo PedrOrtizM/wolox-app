@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../core/services/pokemon/pokemon.service';
+import { IPokemon } from '../../core/models/pokemon.interface';
 
 @Component({
   selector: 'app-list',
@@ -8,12 +9,12 @@ import { PokemonService } from '../../core/services/pokemon/pokemon.service';
 })
 export class ListComponent implements OnInit {
 
-  public list: any = []
+  public pokemonList: Array<IPokemon> = []
   public offset = 0;
   public limit = 20;
   public inputSearch = '';
   public pokemon: any;
-  public isSearch:boolean = false;
+  public isSearch: boolean = false;
 
   constructor(public pokemonService: PokemonService) { }
 
@@ -23,44 +24,41 @@ export class ListComponent implements OnInit {
 
   private getPokemonList() {
 
-    this.pokemonService.getPokemonList(this.limit, this.offset).subscribe((results: any) => {
-      this.list = results.results;
-      console.log(results);
-
+    this.pokemonService.getPokemonList(this.limit, this.offset).subscribe(({ results }) => {
+      this.pokemonList = results;
     })
   }
 
-  public nextPage() {
+  public nextPage(): void {
     this.offset += Number(this.limit);
     this.getPokemonList();
   }
 
-  public previousPage() {
+  public previousPage(): void {
     this.offset -= Number(this.limit);
     this.getPokemonList();
   }
 
-  public changeLimit() {
+  public changeLimit(): void {
     this.offset = 0;
     this.getPokemonList();
   }
 
-  public searchPokemon() {
-    this.pokemonService.getPokemonById(this.inputSearch).subscribe(
-      pokemon => {
-      this.pokemon = pokemon;
-      this.isSearch = false;
-    },()=>this.isSearch = true)
+  public searchPokemon(): void {
+    this.pokemonService.getPokemonById(this.inputSearch.toLowerCase().trim()).subscribe(
+      (pokemon) => {
+        this.pokemon = pokemon;
+        this.isSearch = false;
+      }, () => this.isSearch = true)
 
   }
 
-  public addTocompare(item: any) {
-    this.pokemonService.listToCompare.push(item);    
+  public addTocompare(pokemon: IPokemon): void {
+    this.pokemonService.listToCompare.push(pokemon);
   }
 
-  public removeToCompare(item: any) {
-     this.pokemonService.listToCompare.splice(item,1)
-
+  public removeToCompare(index: number): void {
+    this.pokemonService.listToCompare.splice(index, 1)
   }
-  
+
 }

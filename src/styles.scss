@@ -86,6 +86,7 @@
 section.page {
   background-color: whitesmoke;
   height: 90vh;
+  animation: fadeIn ease 1s;
   h2 {
     margin: 0;
     padding: 3% 8%;
@@ -106,4 +107,19 @@ section.page {
     width: 200px;
     cursor: pointer;
   }
+}
+
+
+
+body {
+  animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+   }
 }

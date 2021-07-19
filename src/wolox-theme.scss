@@ -17,13 +17,20 @@ hr {
   margin: 5% auto;
 }
 
-fieldset{
+fieldset {
   border: 1px solid rgba(0, 166, 232, 0.486);
   padding: 2%;
   margin-bottom: 2.5%;
 }
-legend{
+
+legend {
   font-weight: 600;
+}
+
+button:disabled {
+  background-color: rgba(16, 16, 16, 0.3);
+  color: rgba(16, 16, 16, 0.3);
+  border: rgba(16, 16, 16, 0.3);
 }
 
 .btn {
@@ -36,13 +43,14 @@ legend{
   width: auto;
   padding: 10px 30px;
 }
+
 .btn-primary {
-    background-color:rgb(0, 167, 232);
-    border: 1px solid rgb(0, 167, 232);
-    color: white;
-    font-size: 18px;
-    padding: 15px 30px;
-  }
+  background-color: rgb(0, 167, 232);
+  border: 1px solid rgb(0, 167, 232);
+  color: white;
+  font-size: 18px;
+  padding: 15px 30px;
+}
 
 .btn-secondary {
   border: 1px solid rgb(0, 167, 232);
@@ -55,13 +63,13 @@ legend{
 }
 
 .btn-secondary2 {
-    border: 2px solid rgb(42,167,223);
-    color: white
-  }
-  
-  .btn-secondary2:hover {
-    background-color: rgb(0, 167, 232);
-  }
+  border: 2px solid rgb(42, 167, 223);
+  color: white
+}
+
+.btn-secondary2:hover {
+  background-color: rgb(0, 167, 232);
+}
 
 
 h1 {
@@ -90,14 +98,16 @@ ul {
 }
 
 input {
-    font-size: 16px;
-    padding: 14px 20px;
-    border: 1px solid #ddd;
-  
+  font-size: 16px;
+  padding: 14px 20px;
+  border: 1px solid #ddd;
+
 }
-input:focus{
+
+input:focus {
   background-color: rgba(234, 249, 255, 0.753);
 }
+
 .ng-invalid.ng-touched {
   border-color: red;
 }
@@ -108,7 +118,7 @@ input:focus.input-invalid {
 }
 
 
-.error-message{
+.error-message {
   font-size: 12px;
   font-style: italic;
   font-weight: 600;

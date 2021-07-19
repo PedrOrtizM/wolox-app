@@ -9,6 +9,7 @@
     <form class="col-9 section-body" [formGroup]="profileForm" (ngSubmit)="signIn()">
 
         <fieldset class="container">
+
             <legend>Nombre completo</legend>
             <div class="col-m-12 col-6">
                 <label for="name">Nombre*</label>
@@ -16,26 +17,31 @@
                 <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'name'}"></ng-container>
             </div>
 
-
             <div class="col-m-12 col-6">
                 <label for="last-name">Apellido*</label>
                 <input placeholder="Ortiz" formControlName="last_name" type="text" name="last-name" id="last-name">
                 <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'last_name'}"></ng-container>
             </div>
+
         </fieldset>
+
         <fieldset class="container">
+
             <legend>Contacto</legend>
+
             <div class="col-m-12 col-6">
                 <label for="country">Pais*</label>
-                <app-input-search (changeValue)="   ($event)" [list]="countrys | async" propName="name">
+                <app-input-search (changeValue)="changeCountry($event)" [list]="countrys | async" propName="name">
                 </app-input-search>
                 <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'country'}"></ng-container>
             </div>
+
             <div class="col-m-12 col-6">
                 <label for="email">Correo electrónico*</label>
                 <input placeholder="ejemplo@ejemplo.com" formControlName="mail" type="email" name="email" id="email">
                 <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'mail'}"></ng-container>
             </div>
+
             <div class="col-m-12 col-6">
                 <label for="phone">Teléfono*</label>
                 <input placeholder="33002030" formControlName="phone" type="tel" name="phone" id="phone">
@@ -46,21 +52,24 @@
 
         <fieldset class="container">
             <legend>Seguridad</legend>
+
             <div class="col-m-12 col-6">
                 <label for="password">Contraseña*</label>
-                <input appWxInput formControlName="password" type="password" name="password" id="password">
+                <input formControlName="password" type="password" name="password" id="password">
                 <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'password'}"></ng-container>
             </div>
+
             <div class="col-m-12 col-6">
                 <label for="password-confirm">Confirmar contraseña*</label>
-                <input type="password" name="password-confirm" id="password-confirm">
+                <input formControlName="passwordConfirm" type="password" name="password-confirm" id="password-confirm">
                 <ng-container *ngTemplateOutlet="errorsTemplate;context: {control: 'password'}"></ng-container>
             </div>
+
         </fieldset>
 
 
         <div class="text-center">
-            <button class="btn btn-primary" type="submit">
+            <button [disabled]="profileForm.invalid" class="btn btn-primary" type="submit">
                 Registrar
             </button>
         </div>
@@ -70,13 +79,13 @@
             </button>
         </div>
 
-
     </form>
 </section>
 
 <ng-template let-name="name" let-control="control" #errorsTemplate>
     <div class="error-message" *ngIf="hasError(control, 'required')">{{ name }} Campo requerido</div>
     <div class="error-message" *ngIf="hasError(control, 'pattern')">{{ name }} Formato inválido</div>
+    <div class="error-message" *ngIf="hasError(control, 'equals')">{{ name }} No coinciden las contraseñas</div>
     <div class="error-message" *ngIf="hasError(control, 'maxlength')">No debe exceder el límite de
         {{ profileForm.controls[control].errors?.maxlength.requiredLength }} caracteres
     </div>

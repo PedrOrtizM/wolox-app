@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PokemonService } from '../../core/services/pokemon/pokemon.service';
+import { IPokemon, IPokemonDetail } from '../../core/models/pokemon.interface';
 
 @Component({
   selector: 'app-compare',
@@ -9,18 +10,21 @@ import { PokemonService } from '../../core/services/pokemon/pokemon.service';
 })
 export class CompareComponent implements OnInit {
 
-  public listToCompare:any = []
+  public listToCompare: Array<IPokemonDetail> = []
+
   constructor(private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    console.log(this.pokemonService.listToCompare);
-    this.pokemonService.listToCompare.forEach(({name} : any) => {
-      this.pokemonService.getPokemonById(name).subscribe(pokemon=>{
-        console.log(pokemon);
-        
+    this.getListToCompare();
+  }
+
+
+  private getListToCompare() : void  {
+
+    this.pokemonService.listToCompare.forEach(({ name }) => {
+      this.pokemonService.getPokemonById(name).subscribe((pokemon) => {
         this.listToCompare.push(pokemon);
       })
     });
   }
-
 }
